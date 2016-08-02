@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">
+    {{fullName}}
+    <input v-model="firstName">
+    <input v-model="lastName">
+</div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+            fullName: 'Foo Bar'
+        },
+        computed: {
+            fullName: {
+                get: function(){
+                    return this.firstName + ' ' + this.lastName;
+                },
+                set: function(newValue){
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[1];
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
