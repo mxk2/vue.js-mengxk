@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input v-model="a" id="example">
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    (function(){
+        var data = {a: 1};
+        var vm = new Vue({
+            data: data
+        });
+        console.info(vm.a === data.a);
+        vm.a = 2;
+        console.info(data.a);
+        data.a = 3;
+        console.info(vm.a);
+    })();
+    (function(){
+        var data = {a: 1};
+        var vm = new Vue({
+            el: "#example",
+            data: data
+        });
+        console.info(vm.$data === data);
+        console.info(vm.$el === document.querySelector("#example"));
+        vm.$watch('a', function(newVal, oldVal){
+            console.info('vm.a改变后回调');
+        });
+    })();
+</script>
+</body>
+</html>

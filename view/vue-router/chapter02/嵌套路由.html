@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<router-view></router-view>
+	</div>
+	<script src="../../node_modules/vue/dist/vue.js"></script>
+	<script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+	<script>
+		var Foo = Vue.extend({
+			template: '<div class="foo">' + 
+			'<h2>This is Foo!</h2>' + 
+			'<router-view></router-view>' +
+			'</div>'
+		});
+		var Bar = Vue.extend({
+			template: "<p>This is bar!</p>"
+		});
+		var Baz = Vue.extend({
+			template: "<p>This is baz!</p>"
+		});
+		var App = Vue.extend({});
+		var router = new VueRouter();
+		router.map({
+			'/foo': {
+				component: Foo,
+				//子路由
+				subRoutes: {
+					'/': {
+						component: {
+							template: "<p>Default sub view for Foo</p>"
+						}
+					},
+					'/bar': {
+						// /foo/bar
+						component: Bar
+					},
+					'/baz': {
+						component: Baz
+					}
+				}
+			}
+		});
+		router.start(App, "#app");
+	</script>
+</body>
+</html>

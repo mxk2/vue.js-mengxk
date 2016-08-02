@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本用法</title>
+</head>
+<body>
+	<div id="app">
+		<h1>Hello App!</h1>
+		<p>
+			<a v-link="{path: '/foo'}">Go to Foo</a>
+			<a v-link="{path: '/bar'}">Go to Bar</a>
+		</p>
+		<router-view></router-view>
+	</div>
+	<script src="../../node_modules/vue/dist/vue.js"></script>
+	<script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+	<script>
+		//定义组件
+		var Foo = Vue.extend({
+			template: "<p>This is foo!</p>"
+		});
+		var Bar = Vue.extend({
+			template: "<p>This is bar!</p>"
+		});
+		//路由器需要一个根组件
+		var App = Vue.extend({});
+		//创建一个路由器实例
+		var router = new VueRouter();
+		//定义路由规则
+		router.map({
+			'/foo': {
+				component: Foo
+			},
+			'/bar': {
+				component: Bar
+			}
+		});
+		router.start(App, "#app");
+	</script>
+</body>
+</html>

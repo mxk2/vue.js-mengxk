@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>文本</h1>
+    <span>Message: {{msg}}</span>
+    <span>Message: {{* msg}}</span>
+    <h1>原始的html</h1>
+    <div>{{{raw_html}}}</div>
+    <h1>html特性</h1>
+    <div id="item-{{id}}">item-{{id}}</div>
+    <h1>JavaScript表达式</h1>
+    <p>{{number + 1}}</p>
+    <p>{{ok ? 'YES': 'NO'}}</p>
+    <p>{{message.split('').reverse().join('')}}</p>
+    <h1>过滤器</h1>
+    <p>{{message | capitalize}}</p>
+    <h1>指令</h1>
+    <p v-if="ok">{{ok}}</p>
+    <h1>参数</h1>
+    <p>
+        <a v-bind:href="url">参数</a>
+    </p>
+    <h1>修饰符</h1>
+    <p>
+        <a v-bind:href.literal="/a/b/c">修饰符</a>
+    </p>
+    <h1>缩写</h1>
+    <p>
+        <a v-bind:href="url">缩写</a>
+        <a :href="url">缩写</a>
+        <button v-bind:disabled="ok">Button</button>
+        <button :disabled="ok">Button</button>
+    </p>
+    <p>
+        <a v-on:click="doSomething">doSomething</a>
+        <a @click="doSomething">doSomething</a>
+    </p>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.filter('capitalize', function(value){
+        return value.toUpperCase();
+    });
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            msg: 'msg',
+            id: 'id',
+            //javascript表达式
+            number: 1,
+            ok: true,
+            message: 'mengxk',
+            //参数
+            url: 'http://www.baidu.com'
+        },
+        methods:{
+            doSomething: function(){
+                console.info('doSomething');
+            }
+        }
+    });
+</script>
+</body>
+</html>

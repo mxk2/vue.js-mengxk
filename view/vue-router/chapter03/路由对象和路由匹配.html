@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本用法</title>
+</head>
+<body>
+<div id="app">
+	<h1>Hello App!</h1>
+	<p>
+		<a v-link="{path: '/foo'}">Go to Foo</a>
+		<a v-link="{path: '/bar'}">Go to Bar</a>
+	</p>
+	<router-view></router-view>
+	<div>
+		<p>当前路径: {{$route.path}}</p>
+		<p>当前路由参数: {{$route.params | json}}</p>
+		<p>路由规则所属的路由：{{$route.router}}</p>
+		<p>当前路径的名字：{{$route.name}}</p>
+	</div>
+</div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+	//定义组件
+	var Foo = Vue.extend({
+		template: "<p>This is foo!</p>"
+	});
+	var Bar = Vue.extend({
+		template: "<p>This is bar!</p>"
+	});
+	//路由器需要一个根组件
+	var App = Vue.extend({});
+	//创建一个路由器实例
+	var router = new VueRouter();
+	//定义路由规则
+	router.map({
+		'/foo': {
+			component: Foo,
+			auth: true	//自定义字段
+		},
+		'/bar': {
+			component: Bar
+		},
+		//路由匹配
+		'/user/:username': {
+			component: {
+				template: '<p>用户名是{{$route.params.username}}</p>'
+			}
+		},
+		'/user/*any': {
+			component: {
+				template: '<p>/user/*any：{{$route.params.any}}</p>'
+			}
+		},
+		'/user/*any/bar': {
+			component: {
+				template: '<p>/user/*any/bar：{{$route.params.any}}</p>'
+			}
+		}
+	});
+	/*router.beforeEach(function(transition){
+		if(transition.to.auth){
+			console.info("对用户进行身份验证");
+		}
+	});*/
+	router.start(App, "#app");
+</script>
+</body>
+</html>
