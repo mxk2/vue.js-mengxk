@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="repeat-object">
+    <li v-for="value in object">
+        {{$key}} : {{value}}
+    </li>
+    <li v-for="(key, val) in object">
+        {{key}} {{val}}
+    </li>
+</ul>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#repeat-object',
+        data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    });
+</script>
+</body>
+</html>
