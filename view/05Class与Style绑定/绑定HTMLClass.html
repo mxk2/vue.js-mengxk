@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="static" v-bind:class="{'class-a': isA, 'class-b': isB}">
+    绑定HTML Class
+</div>
+<div class="static" v-bind:class="classObject">
+    绑定HTML Class
+</div>
+<h1>数组语法</h1>
+<div v-bind:class="[classA, classB]">
+    数组语法
+</div>
+<div v-bind:class="[classA, isB ? classB: '']">三元表达式</div>
+<div v-bind:class="[classA, {classB: isB, classC: isC}]">对象语法</div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            isA: true,
+            isB: false,
+            classObject: {
+                'class-a': true,
+                'class-b': true
+            },
+            classA: 'class-a',
+            classB: 'class-b'
+        }
+    });
+</script>
+</body>
+</html>
