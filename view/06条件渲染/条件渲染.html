@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{#if ok}}
+    <h1>Yes</h1>
+    {{/if}}
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>No</h1>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            ok: true
+        }
+    });
+</script>
+</body>
+</html>
