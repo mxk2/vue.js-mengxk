@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <p>Message is: {{message}}</p>
+    <input type="text" v-model="message" placeholder="edit me">
+</div>
+<div>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{checked}}</label>
+</div>
+<div>
+    <input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br />
+    <span>Checked names: {{checkedNames | json}}</span>
+</div>
+<div>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br />
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{picked}}</span>
+</div>
+<div>
+    <select v-model="selected">
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{selected}}</span>
+</div>
+<div>
+    <select v-model="selected" multiple>
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{selected | json}}</span>
+</div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            checkedNames: []
+        }
+    });
+</script>
+</body>
+</html>

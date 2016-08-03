@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input v-model="msg" lazy>
+    <span>{{msg}}</span>
+</div>
+<div>
+    <input v-model="age" number>
+    <span>{{age}}</span>
+</div>
+<div>
+    <input v-model="msg" debounce="1000">
+    <span>{{msg}}</span>
+</div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vw = new Vue({
+        el: 'body'
+    });
+</script>
+</body>
+</html>

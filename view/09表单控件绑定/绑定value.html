@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="radio" name="a" id="radio" v-model="radio" value="valueA">
+    <input type="radio" name="a" id="radio2" v-model="radio" value="valueB">
+    <label for="radio">{{radio}}</label>
+</div>
+<div>
+    <input type="checkbox" id="checkbox" v-model="checkbox">
+    <label for="checkbox">{{checkbox}}</label>
+</div>
+<div>
+    <select id="select" v-model="selected">
+        <option value="abc">ABC</option>
+        <option value="efd">EFD</option>
+    </select>
+    <label for="select">{{selected}}</label>
+</div>
+<div>
+    <input id="toggle" type="checkbox"
+           v-model="toggle"
+            v-bind:true-value="a"
+            v-bind:false-value="b">
+    <label for="toggle">{{toggle}}</label>
+</div>
+<div>
+    <input id="radio3" name="b" type="radio" v-model="pick" v-bind:value="a">
+    <input id="radio4" name="b" type="radio" v-model="pick" value="{{b}}">
+    <label for="radio4">{{pick}}</label>
+</div>
+<div>
+    <select v-model="selected2">
+        <option v-bind:value="{number: 123}">123</option>
+        <option v-bind:value="{number: 456}">456</option>
+    </select>
+</div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vw = new Vue({
+        el: 'body',
+        data: {
+            a: "选中",
+            b: "未选中",
+            selected2:{}
+        }
+    });
+</script>
+</body>
+</html>
