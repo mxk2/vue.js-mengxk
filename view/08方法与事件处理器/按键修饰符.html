@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input v-on:keyup="thirteen($event)">
+<input v-on:keyup.enter="enter">
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        methods: {
+            thirteen: function(event){
+                console.info(event.keyCode);
+            },
+            enter: function(){
+                console.info('enter');
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form v-on:submit.prevent="onSubmit" type="POST" action="#">
+    <input type="text" name="name" value="mxk">
+    <a v-on:click.stop="doThis" href="#">doThis</a>
+    <button v-on:click.stop.prevent="doThis" type="submit">doThis</button>
+</form>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        methods: {
+            doThis: function(){
+                console.info('click');
+            },
+            onSubmit: function(){
+                console.info('doSubmit');
+            }
+        }
+    });
+</script>
+</body>
+</html>
