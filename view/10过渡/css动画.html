@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../node_modules/animate.css/animate.css">
+    <style>
+        .bounce-transition{
+            display:inline-block;
+        }
+        .bounce-enter{
+            animation:bounce-in .5s;
+        }
+        .bounce-leave{
+            animation: bounce-out .5s;
+        }
+        @keyframes bounce-in{
+            0% {
+                transform: scale(0);
+            }
+            50%{
+                transform: scale(1.5);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        @keyframes bounce-out {
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(1.5);
+            }
+            100%{
+                transform: scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<button v-on:click="toggle">toggle</button>
+<span v-show="show" transition="bounce">
+    Loot at me!
+</span>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: 'body',
+        data:{
+            show: true,
+        },
+        methods: {
+            toggle: function(){
+                this.show = this.show ? false : true;
+            }
+        }
+    });
+</script>
+</body>
+</html>

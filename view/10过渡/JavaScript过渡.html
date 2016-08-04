@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button v-on:click="toggle">toggle</button>
+<p v-show="show" transition="fade">JavaScript过渡</p>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.transition('fade', {
+        css: false,
+        enter: function(el, done){
+            $(el).css('opacity', 0)
+                    .animate({opacity: 1}, 1000, done);
+        },
+        enterCancelled: function(el){
+            $(el).stop();
+        },
+        leave: function(el, done){
+            $(el).animate({opacity: 0}, 1000, done);
+        },
+        leaveCancelled: function(el){
+            $(el).stop();
+        }
+    });
+    var vw = new Vue({
+        el: 'body',
+        data: {
+            show: true
+        },
+        methods: {
+            toggle: function(){
+                this.show = this.show ? false : true;
+            }
+        }
+    });
+</script>
+</body>
+</html>
