@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var data = {a: 1};
+    var vm = new Vue({
+        data: data
+    });
+    vm.a = 2;
+    console.info(data.a);
+    vm.b = 2;
+    console.info(vm.b);
+    vm.$set('b', 2);
+    console.info(vm.b);
+    console.info(data.b);
+    Vue.set(data, 'c', 3);
+    console.info(vm.c);
+    console.info(data.c);
+</script>
+</body>
+</html>
