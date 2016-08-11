@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>绑定子组件内的指令到一个组件的根节点</p>
+<child-component v-show="someChildProperty">child-component</child-component>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('child-component', {
+        template: '<div v-show="someChildProperty">Child</div>',
+        data: function(){
+            return {
+                someChildProperty: true
+            };
+        }
+    });
+    new Vue({
+        el: 'body'
+    });
+</script>
+</body>
+</html>

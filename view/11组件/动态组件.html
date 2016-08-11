@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li v-for="item in list">
+        <a v-on:click="tab($event)">{{item}}</a>
+    </li>
+</ul>
+<component :is="currentView" keep-alive>
+</component>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vw = new Vue({
+        el: 'body',
+        data: {
+            list: ['home', 'posts', 'archive'],
+            currentView: 'home'
+        },
+        components: {
+            home: {
+                template: '<div>home</div>'
+            },
+            posts: {
+                template: '<div>posts</div>',
+                activate: function(done){
+                    var self = this;
+                    console.info('activate');
+                }
+            },
+            archive: {
+                template: '<div>archive</div>'
+            }
+        },
+        methods: {
+            tab: function(event){
+                var tab = event.currentTarget.innerText;
+                this.currentView = tab;
+            }
+        }
+    });
+</script>
+</body>
+</html>

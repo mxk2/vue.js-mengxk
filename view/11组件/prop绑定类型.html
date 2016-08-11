@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input v-model="parentMsg"><br>
+<p>默认单向绑定</p>
+<child :msg="parentMsg"></child>
+<p>双向绑定</p>
+<child :msg.sync="parentMsg"></child>
+<p>单次绑定</p>
+<child :msg.once="parentMsg"></child>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('child', {
+        props: ['msg'],
+        template: '<input v-model="msg" />'
+    });
+    var vw = new Vue({
+        el: 'body',
+        data: {
+            msg: '',
+            parentMsg: ''
+        }
+    });
+</script>
+</body>
+</html>

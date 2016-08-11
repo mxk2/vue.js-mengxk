@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>组件市里的作用域是孤立的。不能且不应该在子组件的模板内直接引用父组件的数据。</p>
+<child msg="hello!"></child>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('child', {
+        props: ['msg'],
+        template: '<span>{{msg}}</span>'
+    });
+    var vw = new Vue({
+        el: 'body'
+    });
+</script>
+</body>
+</html>

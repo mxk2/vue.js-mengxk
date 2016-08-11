@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<stack-overflow :model="items"></stack-overflow>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var StackOverflow = Vue.extend({
+        name: 'stack-overflow',
+        template: '<div v-for="item in model" v-if="show">{{item.name}}' +
+        '<stack-overflow></stack-overflow>' +
+        '</div>',
+        props:{
+            model: Array
+        },
+        computed: {
+            show: function(){
+                return this.$index > 2 ? false : true;
+            }
+        }
+    });
+    Vue.component('stack-overflow', StackOverflow);
+    var vw = new Vue({
+        el: 'body',
+        data: {
+            items: [
+                {name: 'mengxk', show: true},
+                {name: 'liuyb', show: true},
+                {name: 'chenjj', show: false}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

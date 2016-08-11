@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<template id="multi-insertion">
+    <div>
+        <slot name="one"></slot>
+        <slot></slot>
+        <slot name="two"></slot>
+    </div>
+</template>
+<multi-insertion>
+    <p slot="one">One</p>
+    <p slot="two">Two</p>
+    <p>Default A</p>
+</multi-insertion>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('multi-insertion', {
+        template: '#multi-insertion'
+    });
+    new Vue({
+        el: 'body'
+    });
+</script>
+</body>
+</html>
