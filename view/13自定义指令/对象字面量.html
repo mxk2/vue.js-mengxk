@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div v-demo="{color:'white', text: 'hello!'}"></div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.directive('demo', function(value){
+        console.log(value.color);
+        console.log(value.text);
+    });
+    var vm = new Vue({
+        el: 'body'
+    });
+</script>
+</body>
+</html>

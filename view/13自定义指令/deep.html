@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" v-my-directive="obj" v-model="obj">
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.directive('my-directive', {
+        deep: true,
+        update: function(obj){
+            console.info(obj);
+        }
+    });
+    new Vue({
+        el: 'body',
+        data: {
+            obj: ""
+        }
+    });
+</script>
+</body>
+</html>

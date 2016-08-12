@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" v-my-directive="someValue" v-model="someValue">
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.directive('my-directive', {
+        bind: function(){
+            console.info('在指令第一次绑定到元素时调用');
+        },
+        update: function(newValue, oldValue){
+            console.info('值更新时调用一次');
+            console.info('newValue:' + newValue + ':oldValue' + oldValue);
+            document.querySelector('body').style.backgroundColor = newValue;
+        },
+        unbind: function(){
+            console.info('删除bind()绑定的事件监听器');
+        }
+    });
+    var vw = new Vue({
+        el: 'body',
+        data: {
+            someValue: 'red'
+        }
+    });
+</script>
+</body>
+</html>

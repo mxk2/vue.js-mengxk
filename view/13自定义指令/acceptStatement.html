@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>传入 acceptStatement:true 可以让自定义指令接受内联语句，就像 v-on 那样：</p>
+<div v-my-directive="a++">{{a}}</div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.directive('my-directive', {
+        acceptStatement: true,
+        update: function(fn){
+            //传入值是一个函数
+            fn();
+        }
+    });
+    new Vue({
+        el: 'body',
+        data: {
+            a: 1
+        }
+    });
+</script>
+</body>
+</html>

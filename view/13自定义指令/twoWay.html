@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>如果指令想向 Vue 实例写回数据，则在指令定义对象中指定 twoWay: true 。该选项允许在指令中使用 this.set(value):</p>
+<input type="text" v-example="a">
+<input type="text" v-model="a">
+<input type="checkbox" v-model="flag">是否向实例协会数据
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.directive('example', {
+        twoWay: true,
+        bind: function(){
+            this.handler = function(){
+                //将数据协会vm
+                //如果指令这样绑定v-example='a.b.c'
+                //它将用给定值设置vm.a.b.c
+                //console.info(this.el.value);
+                if(vm.flag){
+                    this.set(this.el.value);
+                }
+            }.bind(this)
+            this.el.addEventListener('input', this.handler);
+        },
+        unbind: function(){
+            this.el.removeEventListener('input', this.handler);
+        }
+    });
+    var vm = new Vue({
+        el: 'body',
+        data: {
+            a: '',
+            flag: false
+        }
+    });
+</script>
+</body>
+</html>

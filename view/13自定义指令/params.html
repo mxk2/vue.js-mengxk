@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div v-example a="hi" b="mengxk"></div>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.directive('example', {
+        params: ['a', 'b'],
+        bind:function(){
+            console.log(this.params.a + ':' + this.params.b);
+        }
+    });
+    new Vue({
+        el: 'body'
+    });
+</script>
+</body>
+</html>
