@@ -13,18 +13,18 @@
 		</p>
 		<router-view></router-view>
 	</div>
-	<script src="../../node_modules/vue/dist/vue.js"></script>
-	<script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+	<script src="../../../node_modules/vue/dist/vue.js"></script>
+	<script src="../../../node_modules/vue-router/dist/vue-router.js"></script>
 	<script>
 		//定义组件
 		var Foo = Vue.extend({
-			template: "<p>This is foo!</p>"
+			template: '<p>This is foo!</p>'
 		});
 		var Bar = Vue.extend({
-			template: "<p>This is bar!</p>"
+			template: '<p>This is bar!</p>'
 		});
 		//路由器需要一个根组件
-		var App = Vue.extend({});
+		var App = Vue.extend();
 		//创建一个路由器实例
 		var router = new VueRouter();
 		//定义路由规则
@@ -36,7 +36,8 @@
 				component: Bar
 			}
 		});
-		router.start(App, "#app");
+		//启动应用
+		router.start(App, '#app');
 	</script>
 </body>
 </html>

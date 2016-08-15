@@ -6,37 +6,41 @@
 </head>
 <body>
 	<div id="app">
+		<h1>Hello App!</h1>
+		<p>
+			<a v-link="{path: '/foo'}">Go to /foo</a>
+			<a v-link="{path: '/foo/bar'}">Go to /foo/bar</a>
+			<a v-link="{path: '/foo/baz'}">Go to /foo/baz</a>
+		</p>
 		<router-view></router-view>
 	</div>
-	<script src="../../node_modules/vue/dist/vue.js"></script>
-	<script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+	<script src="../../../node_modules/vue/dist/vue.js"></script>
+	<script src="../../../node_modules/vue-router/dist/vue-router.js"></script>
 	<script>
 		var Foo = Vue.extend({
-			template: '<div class="foo">' + 
-			'<h2>This is Foo!</h2>' + 
-			'<router-view></router-view>' +
-			'</div>'
+			template:
+			'<div class="foo">' +
+					'<h2>This is Foo!</h2>' +
+					'<router-view></router-view>' +
+					'</div>'
 		});
 		var Bar = Vue.extend({
-			template: "<p>This is bar!</p>"
+			template: '<p>This is bar!</p>'
 		});
 		var Baz = Vue.extend({
-			template: "<p>This is baz!</p>"
+			template: '<p>This is baz!</p>'
 		});
-		var App = Vue.extend({});
 		var router = new VueRouter();
 		router.map({
 			'/foo': {
 				component: Foo,
-				//子路由
 				subRoutes: {
 					'/': {
 						component: {
-							template: "<p>Default sub view for Foo</p>"
+							template: '<p>Default sub view for Foo</p>'
 						}
 					},
 					'/bar': {
-						// /foo/bar
 						component: Bar
 					},
 					'/baz': {
@@ -45,7 +49,8 @@
 				}
 			}
 		});
-		router.start(App, "#app");
+		var App = Vue.extend();
+		router.start(App, '#app');
 	</script>
 </body>
 </html>
