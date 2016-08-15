@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" v-model="userInput">
+<span>{{msg | concat userInput}}</span>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.filter('concat', function(value, input){
+        return value + input;
+    });
+    new Vue({
+        el: 'body',
+        data: {
+            msg: 'your name: ',
+            userInput: ''
+        }
+    });
+</script>
+</body>
+</html>

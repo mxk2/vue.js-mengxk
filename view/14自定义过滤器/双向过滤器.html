@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" v-model="value | currencyDisplay">
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.filter('currencyDisplay', {
+        //model -> view
+        //在更新input元素之前格式化值
+        read: function(val){
+            console.info(val);
+            return '$' + val.toFixed(2)
+        },
+        //view -> model
+        //在写会数据之前格式化值
+        write: function(val, oldVal){
+            //console.info(val + ':' + oldVal);
+            var number = +val.replace(/[^\d.]/g, '');
+            return isNaN(number) ? 0 : parseFloat(number.toFixed(2));
+        }
+    });
+    new Vue({
+        el: 'body',
+        data: {
+            value: 12.345
+        }
+    });
+</script>
+</body>
+</html>

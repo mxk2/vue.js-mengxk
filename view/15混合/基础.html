@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<component></component>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    //定义一个混合对象
+    var myMixin = {
+        created: function(){
+            this.hello();
+        },
+        methods: {
+            hello: function(){
+                console.log('hello from mixin');
+            }
+        }
+    };
+    //定义一个组件，使用这个混合对象
+    var Component = Vue.extend({
+        mixins: [myMixin]
+    });
+    var component = new Component();
+</script>
+</body>
+</html>

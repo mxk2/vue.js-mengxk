@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    var mixin = {
+        created: function(){
+            console.log('mixin hook called');
+        }
+    };
+    new Vue({
+        mixins: [mixin],
+        created: function(){
+            console.log('component hook called');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>类似于自定义指令，可以用全局方法 Vue.filter() 注册一个自定义过滤器，它接收两个参数：过滤器 ID 和过滤器函数。过滤器函数以值为参数，返回转换后的值：</p>
+<span v-text="message | reverse"></span>
+<span v-text="message | wrap 'begin' 'end'"></span>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.filter('reverse', function (value) {
+        return value.split('').reverse().join('')
+    });
+    Vue.filter('wrap', function(value, begin, end){
+        return begin + value + end;
+    });
+    new Vue({
+        el: 'body',
+        data: {
+            message: 'message'
+        }
+    });
+</script>
+</body>
+</html>
