@@ -6,29 +6,25 @@
 </head>
 <body>
 <div id="app">
-    <h1>Hello App!</h1>
     <p>
-        <a v-link="{name: 'user', params: {userId: 123}}">User</a>
+        <a v-link="{name: 'user', params: {userId: 123}}">user</a>
     </p>
     <router-view></router-view>
 </div>
-<script src="../../node_modules/vue/dist/vue.js"></script>
-<script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.js"></script>
 <script>
-    //路由器需要一个根组件
-    var App = Vue.extend({});
-    //创建一个路由器实例
-    var router = new VueRouter();
-    //定义路由规则
-    router.map({
-        '/user/:userId': {
-            name: 'user',
-            component: {
-                template: '<p>/user/:userId：{{$route.params.userId}}</p>'
-            }
-        }
-    });
-    router.start(App, "#app");
+	var App = Vue.extend();
+	var router = new VueRouter();
+	router.map({
+		'/user/:userId': {
+			name: 'user',
+			component: {
+				template: '<p>user</p>'
+			}
+		}
+	});
+	router.start(App, '#app');
 </script>
 </body>
 </html>
