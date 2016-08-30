@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/mxk2/vue.js-mengxk/issues"
   },
-  "homepage": "https://github.com/mxk2/vue.js-mengxk#readme"
+  "homepage": "https://github.com/mxk2/vue.js-mengxk#readme",
+  "devDependencies": {
+    "style-loader": "^0.13.1"
+  },
+  "dependencies": {
+    "css-loader": "^0.24.0",
+    "style-loader": "^0.13.1"
+  }
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<a v-link="{name: 'user', params: {userId: 123}}">User</a>
+		<router-view></router-view>
+	</div>
+	<script src="../../../node_modules/vue/dist/vue.js"></script>
+	<script src="../../../node_modules/vue-router/dist/vue-router.js"></script>
+	<script>
+		var app = Vue.extend();
+		var router = new VueRouter()
+		router.map({
+			'/user/:userId': {
+				name: 'user',
+				component:{
+					template: '<p>user</p>'
+				}
+			}
+		});
+		router.start(app, 'body');
+	</script>
+</body>
+</html>
